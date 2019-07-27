@@ -19,17 +19,15 @@ mvn clean install -DskipTests
 
 #### 3. 创建数据库
 
-在mysql中创建`cat`数据库，导入脚本`{CAT_SRC}/script/Cat.sql`
+在mysql中创建`cat`数据库，导入脚本`{CAT_SRC}/script/CatApplication.sql`
 
 #### 4. 拷贝并更新配置文件
 
-在CAT运行盘建`data\appdatas\cat`目录，将`{CAT_SRC}/script/`下列配置文件：
+在CAT运行盘建`data\appdatas\cat`目录创建3个配置文件：
 
 *  CAT客户端配置文件client.xml
 *  CAT服务器数据源配置文件datasources.xml
 *  CAT服务器配置文件server.xml
-
-都复制到`data\appdatas\cat`目录下：
 
 
 本地配置案例如下：
@@ -41,7 +39,7 @@ CAT客户端配置文件client.xml
 <config mode="client" xmlns:xsi="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="config.xsd">
 	<servers>
 		<!-- Local mode for development -->
-		<server ip="192.168.7.70" port="2280" http-port="8080" />
+		<server ip="127.0.0.1" port="2280" http-port="8080" />
 		<!-- If under production environment, put actual server address as list. -->
 		<!-- 
 			<server ip="192.168.7.71" port="2280" /> 
@@ -109,14 +107,7 @@ CAT服务器配置文件server.xml
 
 1. 将`cat.war`部署到tomcat的webapps目录下，启动tomcat
 2. 打开cat控制台http://localhost:8080/cat
-3. 配置全局路由，右上角`配置`，使用`catadmin/admin`登录，左边导航`全局告警配置->客户端路由`
 
-本地路由配置案例
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<router-config backup-server="192.168.7.70" backup-server-port="2280">
-   <default-server id="192.168.7.70" weight="1.0" port="2280" enable="true"/>
-</router-config>
 ```
 
 #### 6. 校验CAT正常
