@@ -9,6 +9,9 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * 入口点的埋点
+ */
 public class CatServletFilter implements Filter {
 	
     private String[] urlPatterns = new String[0];
@@ -38,6 +41,7 @@ public class CatServletFilter implements Filter {
         }
 
         CatContext catContext = new CatContext();
+        // 第一次调用headers不都是空的吗，为什么？
         catContext.addProperty(Cat.Context.ROOT, request.getHeader(CatHttpConstants.CAT_HTTP_HEADER_ROOT_MESSAGE_ID));
         catContext.addProperty(Cat.Context.PARENT, request.getHeader(CatHttpConstants.CAT_HTTP_HEADER_PARENT_MESSAGE_ID));
         catContext.addProperty(Cat.Context.CHILD, request.getHeader(CatHttpConstants.CAT_HTTP_HEADER_CHILD_MESSAGE_ID));

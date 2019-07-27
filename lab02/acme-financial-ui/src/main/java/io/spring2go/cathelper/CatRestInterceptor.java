@@ -14,6 +14,9 @@ import com.dianping.cat.Cat.Context;
 import com.dianping.cat.CatConstants;
 import com.dianping.cat.message.Transaction;
 
+/**
+ * 出口点的埋点
+ */
 @Component
 public class CatRestInterceptor implements ClientHttpRequestInterceptor {
 
